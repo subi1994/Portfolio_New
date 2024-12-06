@@ -131,3 +131,64 @@ const sr = ScrollReveal({
 sr.reveal(`.home__data`)
 sr.reveal(`.home__handle`, {delay: 700})
 sr.reveal(`.home__social, .home__scroll`,{delay: 900, origin: 'bottom'})
+
+// const contactForm = document.getElementById('contact-form'),
+//       contactName = document.getElementById('contact-name'),
+//       contactEmail = document.getElementById('contact-email'),
+//       contactProject = document.getElementById('contact-project'),
+//       contactMessage = document.getElementById('contact-message')
+      
+// const sendEmail = (e) =>{
+//   e.preventDefault()
+
+//   // Check if the field has a value
+//   if(contactName.value === '' || contactEmail.value === '' || contactProject.value === ''){
+//     // Add and remove color
+//     contactMessage.classList.remove('color-blue')
+//     contactMessage.classList.add('color-red')
+
+//     // Show message
+//     contactMessage.textContent = 'Write all the input fields 📩' 
+//   }else{
+//     // serviceID - templateID - #form - publicKey
+//     emailjs.sendForm('service_xz1odgs','template_w4optpe','#contact-form','eTG2VGRSGMkx3wjvK')
+//       .then(() =>{
+//         // Show message and add color
+//         contactMessage.classList.add('color-blue')
+//         contactMessage.textContent = 'Message sent ✅'
+
+//         // Remove message after three seconds
+//         setTimeout(() => {
+//           contactMessage.textContent = ''
+//         }, 5000);
+
+//       }, (error) =>{
+//         alert('OOPS! SOMETHING HAS FAILED...', error)
+//       })
+
+//     // To clear the input field
+//     contactName.value = ''
+//     contactEmail.value = ''
+//     contactProject.value = ''
+//   }
+// }
+// contactForm.addEventListener('submit', sendEmail)
+
+// Initialize EmailJS
+(function() {
+    emailjs.init('eTG2VGRSGMkx3wjvK'); // Replace 'YOUR_PUBLIC_KEY' with your EmailJS public key
+})();
+
+// Add event listener to the contact form
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission behavior
+
+    // Send form data using EmailJS
+    emailjs.sendForm('service_xz1odgs', 'template_w4optpe', this)
+        .then(function() {
+            alert('Message sent successfully!');
+        }, function(error) {
+            alert('Failed to send message. Please try again.');
+            console.error('EmailJS Error:', error);
+        });
+});

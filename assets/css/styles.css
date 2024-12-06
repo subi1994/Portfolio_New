@@ -108,6 +108,8 @@ button {
 img {
   max-width: auto;
   height: auto;
+  object-fit: cover;
+  display: block;
 }
 
 /*=============== THEME ===============*/
@@ -1103,3 +1105,6 @@ body.light-theme {
     border-radius: .5rem;
   }
 }
+
+
+
